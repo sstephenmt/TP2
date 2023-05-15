@@ -1,0 +1,228 @@
+<header>
+  <button class="boton-menu" (click)="toggleMenu()">    
+    <label for="boton-menu"><i class="fa-solid fa-bars fa-lg" style="color: #0656e0;"></i></label>
+  </button>
+  <div class="capa"></div>
+  <input type="checkbox" id="boton-menu">
+  <div class="container-menu">
+    <div class="cont-menu">
+      <nav>
+        <h1>sedes</h1>
+        <ul>
+          <li *ngFor="let all_sedes of all_sedes ">
+            <a href="#" (click)="onSedesClick(all_sedes.ID)">{{ all_sedes.NombreSede }}</a>
+          </li>
+        </ul>
+        <h2>carrera</h2>
+        <ul>
+          <li *ngFor="let carrera of all_carreras">
+            <a href="#" (click)="onCarreraClick(carrera.id_carrera)">{{ carrera.nombre_carrera }}</a>
+          </li>
+        </ul>
+        <h3>Mas info</h3>
+        <ul>
+          <li><a href="#" (click)="abrirModal1()">Valoranos</a></li>
+          
+          <li><a href="#" (click)="abrirModal2()">Solicitar info</a></li>
+
+          <li><a href="#" (click)="abrirModal3()">Talleres</a></li>
+
+          <li><a href="https://ucontinental.edu.pe/mallas-curriculares/" target="_blank">Malla curricular</a></li>
+
+        </ul>
+      </nav>
+      <label for="boton-menu">✖</label>
+    </div>
+  </div>
+  <div class="contenido-header">
+    <div class="logo">
+      <img class="logo" src="assets/images/LogoTexto.png" alt="Logo">
+    </div>
+    <div class="texto-container">
+      <span class="texto-fijo">Ruta de experiencias UC </span>
+      <span class="texto-variable" >{{textoVariable}}</span> 
+    </div>
+  </div>
+</header>
+
+<body>
+  <div class="iamge-conteiner-wrapper">
+    <div class="image-container">
+      <div class="image-wrapper" *ngFor="let image of displayedImages">
+        <img class="img_ciclo" [src]="image.src" [alt]="image.id">
+      </div>
+    </div>
+    <!-- prubea de un botton para las exp. -->      
+    <div class="botones">
+      <button class="image-button" (click)="mostrarPopup(1)">Experiencia 1</button>
+      <button class="image-button" (click)="mostrarPopup(2)">Experiencia 2</button>
+      <button class="image-button" (click)="mostrarPopup(3)">Experiencia 3</button>
+    </div>
+
+    <div class="popup-overlay" *ngIf="showPopup"></div>
+    <div class="popup" *ngIf="showPopup">
+     <div class="popup-content">
+       <h2 class="titulo_popup">{{ experienciaSeleccionada.titulo }}</h2>
+       <h3 class="sub_popup">{{ experienciaSeleccionada.subtitulo }}</h3>
+       <p class="exp_popup">{{ experienciaSeleccionada.parrafo }}</p>
+       
+       <button class="close_popup" (click)="closePopup()"><i class="fa-regular fa-circle-xmark fa-xl" style="color: #558dec;"></i></button>
+     </div>
+     <img class="img_popup" [src]="experienciaSeleccionada.ruta_contenido" alt="Imagen de la experiencia">
+    </div>
+   </div>
+
+
+<div *ngFor="let dato of datos">
+  <button class="btn_experiencias" [style.marginTop.px]="dato.fila_experiencia * 10"
+          [style.marginLeft.px]="dato.ciclo_inicio * 50">
+    <img [src]="dato.icono_categoria" alt="Icono Categoría">
+  </button>
+</div>
+
+
+<input type="checkbox" id="btn-modal1">
+<input type="checkbox" id="btn-modal1">
+<div class="modal1">
+  <div class="contenedor1">
+    <header>¡Valoranos
+      !</header>
+    <label for="btn-modal1">X</label>
+    <div class="contenido1">
+      <div class="calificacion">
+        <div class="estrella">
+          <input type="radio" name="rate" id="rate-5">
+          <label for="rate-5" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-4">
+          <label for="rate-4" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-3">
+          <label for="rate-3" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-2">
+          <label for="rate-2" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-1">
+          <label for="rate-1" class="fas fa-star"></label>
+          <form action="#">
+            <header></header>
+            <div class="textarea">
+              <textarea cols="30" placeholder="Comentanos tu experiencia..."></textarea>
+            </div>
+            <div class="btn_enviar">
+              <button type="submit">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+
+<input type="checkbox" id="btn-modal2">
+<div class="modal2">
+  <div class="contenedor2">
+    <header>¡Solcitar info!</header>
+    <label for="btn-modal2">X</label>
+    <div class="contenido2">
+        <!--separacion-->
+    </div>
+  </div>
+</div>
+
+<input type="checkbox" id="btn-modal3">
+<div class="modal3">
+  <div class="contenedor3">
+    <header>¡Taller!</header>
+    <label for="btn-modal3">X</label>
+    <div class="contenido3">
+        <!--separacion-->
+    </div>
+  </div>
+</div>
+ 
+  
+  
+  <div class="container btn_logros">
+    <div class="btn-float ">
+        <a href="https://ucontinental.edu.pe/logros-por-carreras/#1595257957333-ab1dd253-2000" target="_blank" class="btn"><i class="fa-solid fa-star fa-sm px-1"></i>Nuestros Logros</a>
+    </div>
+  </div>
+  <div class="container btn_wsp">
+    <div class="btn-float">
+        <a href="https://api.whatsapp.com/send/?phone=51971115546&text=Hola%2C+necesito+mas+informaci%C3%B3n+de+https%3A%2F%2Fucontinental.edu.pe&type=phone_number&app_absent=0" target="_blank" class="btn"><i class="fa-brands fa-whatsapp fa-xl" style="color: #26a63b;"></i></a>
+    </div>
+  </div>
+  
+
+</body>
+<footer class="bg-dark-custom text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-2">
+    
+      <!-- Section: Links -->
+    <section class="canales_atencion">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+      
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 info_correo">
+          <h5 class="text-uppercase fw-bold">CORREO CORPORATIVO</h5>
+          <div class="container-fluid correo">
+            <i class="fa-solid fa-envelope fa-lg" style="color: #c4daff;"></i>
+            <span class="px-1">
+              centrodeatencion@continental.edu.pe
+            </span>
+          </div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 info_campus">
+          <h5 class="text-uppercase fw-bold">Nuestro Campus</h5>
+        
+           <div class="container-fluid">
+              <div class="ubicacion">
+                <i class="fa-solid fa-location-dot fa-lg px-1" style="color: #c4daff;"></i>
+                <span class="px-1">
+                <span class="fw-bold">HUANCAYO :</span>
+                Av. San Carlos 1980 Urb. San Antonio-Huancayo
+                </span>
+              </div>
+              <div class="telefono">
+                <i class="fa-solid fa-phone fa-lg px-1" style="color: #c4daff;"></i>
+                <span class=" text-uppercase">
+                <span class="fw-bold">Teléfono : </span><u>064-481430</u>
+                </span>
+              </div>
+           </div>
+     
+         
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0 info_redes ">
+          <h5 class="text-uppercase fw-bold">Nuestras Redes</h5>
+          <a class="btn  btn-floating m-1"  target="_blank" href="https://www.facebook.com/ucontinental" role="button"
+          ><i class="fa-brands fa-facebook fa-fade fa-xl" style="color: #c4daff;"></i></a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-floating m-1" target="_blank" href="#!" role="button"
+          ><i class="fa-brands fa-twitter fa-fade fa-xl" style="color: #c4daff;"></i></a>
+  
+        <!-- Instagram -->
+        <a class="btn  btn-floating m-1"  target="_blank" href="https://www.instagram.com/ucontinental/?fbclid=IwAR016ZG-Jx0O10HPObmOkUoK4-wXqvpYqxFXnaXPPt8atHPzxy64Zz32jOQ" role="button"
+          ><i class="fa-brands fa-instagram fa-fade fa-xl" style="color: #c4daff;"></i></a>    
+           
+         
+        </div>
+        <!--Grid column-->
+
+        
+      </div>
+      <!--Grid row-->
+    </section>
+   
+  </div>
+  <!-- Grid container -->
+
+  
+</footer>
