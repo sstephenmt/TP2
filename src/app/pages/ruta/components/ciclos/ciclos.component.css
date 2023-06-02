@@ -1,0 +1,7 @@
+.ciclo{
+  display: flex;
+  justify-content: center;
+}
+.ciclo img {
+  max-height: 100%;
+}

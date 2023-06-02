@@ -1,0 +1,8 @@
+<div [ngStyle]="tabla()" *ngIf="experiencias">
+    <div *ngFor="let experiencia of experiencias" style="background-color: rgb(205, 240, 240)"
+        (click)="abrirContenido(experiencia.id_contenido)"
+        [ngStyle]="posicion(experiencia.ciclo_inicio,experiencia.ciclo_fin,experiencia.fila_experiencia)">
+        <img [src]="experiencia.icono_categoria" alt="" style="height: 30px;">
+        {{ experiencia.titulo }}
+    </div>
+</div>

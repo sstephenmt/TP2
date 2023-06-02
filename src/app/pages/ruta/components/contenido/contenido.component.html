@@ -1,0 +1,34 @@
+<div class="overlay"></div>
+
+<div class="container">
+        <div class="cerrar" (click)="cerrarContenido()">
+            <i class="fa-regular fa-circle-xmark fa-2xl" style="color: #05368a;"></i>
+        </div>
+        <div class="contenido">
+            <div class="multimedia_contenido">
+                <div *ngIf="contenido.tipo_contenido.toLowerCase()==='video'">
+                    <iframe [src]="url" frameborder="0"></iframe>
+                </div>
+                <div *ngIf="contenido.tipo_contenido.toLowerCase()==='imagen'">
+                    <img [src]="contenido.ruta_contenido" alt="" style="max-width: 400px; height: auto;">
+                </div>
+                <div *ngIf="contenido.tipo_contenido.toLowerCase()==='imagen360'">
+                    <img [src]="contenido.ruta_contenido" alt="">
+                </div>
+            </div>
+            <div class="texto_contenido">
+                <div class="titulo_contenido">
+                    <!-- titulo {{contenido.titulo}} -->                    
+                    <h1>Titulo</h1>
+                </div>
+                <div class="subtitulo_contenido">
+                    <!-- sub {{contenido.subtitulo}}-->
+                    <h1>subtitulo</h1>
+                </div>
+                <div class="parrafo_contenido">
+                    <!-- parrafo {{contenido.parrafo}}-->
+                    <h2>parrafo...Lorem ipsum dolor sit amet. Ut quas aspernatur aut nemo autem eos ducimus unde est assumenda velit et dignissimos dolore. Et tenetur distinctio non itaque odit ea consequuntur odit ea vitae omnis non nemo enim ex dicta accusamus. Aut assumenda beatae ut quam rerum est unde voluptatem</h2>
+                </div>
+            </div>
+        </div>    
+</div>

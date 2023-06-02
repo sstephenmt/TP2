@@ -1,0 +1,10 @@
+<div>
+    <div *ngIf="sede">
+        {{sede.nombre_sede}}
+    </div>
+    <div>
+        <div *ngFor="let carrera of carreras" (click)="verRuta(carrera)">
+            {{carrera.nombre_carrera}}
+        </div>
+    </div>
+</div>

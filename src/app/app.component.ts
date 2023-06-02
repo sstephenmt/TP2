@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostDataService } from './services/post-data.services';
+import { SedeService } from './services/sede.service';
 
 interface all_carreras{   
   ID_carrera: number;
@@ -53,13 +54,17 @@ export class AppComponent implements OnInit {
   experiencias: experiencia[] = [];
  
 
-  constructor(private post: PostDataService) {
+  constructor(
+    private post: PostDataService,
+    private sedeService:SedeService
+    ) {
     this.post.get_sedes().subscribe((data) => {      
       this.all_sedes = data;
     });    
     this.post.get_carreras_web().subscribe((data) => {
       this.carreras_web=data;
     })
+    this.sedeService.getSedes().subscribe()
     
   } 
   

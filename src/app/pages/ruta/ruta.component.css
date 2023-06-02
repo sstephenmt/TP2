@@ -1,0 +1,10 @@
+.texto_cabezera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 575;
+  }
+  
